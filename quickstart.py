@@ -54,16 +54,16 @@ def main():
     events = events_result.get("items", [])
 
     if not events:
-      print("No upcoming events found.")
-      return
+      return("No upcoming events found.")
+      
 
-    # Prints the start and name of the next 10 events
+    # RETURNS the start and name of the next 10 events
     for event in events:
       start = event["start"].get("dateTime", event["start"].get("date"))
-      print(start, event["summary"])
+      return(start, event["summary"]) #Doesn't return the name ("summary") of the event, only the start time. Need to fix this.
 
   except HttpError as error:
-    print(f"An error occurred: {error}")
+    return(f"An error occurred: {error}")
 
 
 if __name__ == "__main__":
